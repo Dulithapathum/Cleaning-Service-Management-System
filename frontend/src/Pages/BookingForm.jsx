@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { useEffect } from "react";
+import axios from "axios";
 const BookingForm = () => {
   const [form, setForm] = useState({
     customer_name: "",
@@ -8,14 +9,26 @@ const BookingForm = () => {
     service_id: "",
   });
   const [services, setServices] = useState([]);
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/services");
+        setServices(res.data);
+      } catch (err) {
+        console.error("Failed to fetch services", err);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const handleSubmit = async (e) => {};
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 py-6">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 py-6 pt-20">
       <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-lg">
         <h2 className="text-2xl font-semibold text-center text-blue-500 mb-6">
-          Book a Cleaning
+          Book a Service
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
