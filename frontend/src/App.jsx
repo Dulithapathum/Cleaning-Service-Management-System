@@ -42,6 +42,14 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             }
+          />{" "}
+          <Route
+            path="/edit-booking/:id"
+            element={
+              <PrivateRoute>
+                <BookingForm />
+              </PrivateRoute>
+            }
           />
         </Routes>
       </Router>

@@ -9,8 +9,28 @@ export const getBookings = async (req, res) => {
     res.json(bookings);
   } catch (error) {
     console.log(error);
-
     res.status(500).json({ message: "Error fetching bookings", error });
+  }
+};
+
+export const getBookingById = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id).populate(
+      "service_id"
+    );
+
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    if (booking.user_id.toString() !== req.user.id) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    res.json(booking);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error fetching booking", error });
   }
 };
 
