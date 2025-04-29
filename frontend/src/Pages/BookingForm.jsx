@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
 const BookingForm = () => {
   const [form, setForm] = useState({
     customer_name: "",
@@ -8,7 +8,11 @@ const BookingForm = () => {
     date_time: "",
     service_id: "",
   });
+
   const [services, setServices] = useState([]);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -16,13 +20,38 @@ const BookingForm = () => {
         setServices(res.data);
       } catch (err) {
         console.error("Failed to fetch services", err);
+        setErrorMessage("Failed to load services.");
       }
     };
 
     fetchServices();
   }, []);
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post("http://localhost:5000/api/bookings", form, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setSuccessMessage("Booking successful!");
+      setForm({
+        customer_name: "",
+        address: "",
+        date_time: "",
+        service_id: "",
+      });
+    } catch (err) {
+      console.error("Booking failed", err);
+      setErrorMessage("Booking failed. Please try again.");
+    }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 py-6 pt-20">
@@ -30,6 +59,19 @@ const BookingForm = () => {
         <h2 className="text-2xl font-semibold text-center text-blue-500 mb-6">
           Book a Service
         </h2>
+
+        {/* Message Area */}
+        {successMessage && (
+          <div className="bg-blue-500 text-white text-center p-2 rounded mb-4">
+            {successMessage}
+          </div>
+        )}
+        {errorMessage && (
+          <div className="bg-red-500 text-white text-center p-2 rounded mb-4">
+            {errorMessage}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700 mb-1">Name</label>
@@ -66,7 +108,7 @@ const BookingForm = () => {
           <div>
             <label className="block text-gray-700 mb-1">Service Type</label>
             <select
-              className="w-full p-3  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={form.service_id}
               onChange={(e) => setForm({ ...form, service_id: e.target.value })}
               required
