@@ -33,6 +33,12 @@ export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
+    }
+
     const user = await User.findOne({ username });
     if (!user) return res.status(400).json({ message: "Invalid credentials" });
 
@@ -46,6 +52,9 @@ export const login = async (req, res) => {
 
     res.json({ token });
   } catch (error) {
-    res.status(500).json({ message: "Server error during login", error });
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Server error during login", error: error.message });
   }
 };

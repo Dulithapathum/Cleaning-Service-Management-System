@@ -8,7 +8,13 @@ import serviceRoutes from "./routes/service.js";
 const app = express();
 dotenv.config();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 connectDB();
