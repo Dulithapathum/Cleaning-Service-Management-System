@@ -1,7 +1,7 @@
 import Booking from "../models/Booking.js";
 
 // Get Booking
-exports.getBookings = async (req, res) => {
+export const getBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({ user_id: req.user.id }).populate(
       "service_id"
@@ -13,7 +13,7 @@ exports.getBookings = async (req, res) => {
 };
 
 // Add Booking
-exports.addBooking = async (req, res) => {
+export const addBooking = async (req, res) => {
   const { customer_name, address, date_time, service_id } = req.body;
   if (!customer_name || !address || !date_time || !service_id) {
     return res.status(400).json({ message: "All fields are required" });
@@ -35,7 +35,7 @@ exports.addBooking = async (req, res) => {
 };
 
 // Update Booking
-exports.updateBooking = async (req, res) => {
+export const updateBooking = async (req, res) => {
   try {
     const booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -50,7 +50,7 @@ exports.updateBooking = async (req, res) => {
 };
 
 // Delete Booking Function
-exports.deleteBooking = async (req, res) => {
+export const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findByIdAndDelete(req.params.id);
     if (!booking) {
