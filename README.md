@@ -1,6 +1,10 @@
 # 🧼 Cleaning Service Management System
 
+![screencapture-cleaning-service-management-system-git-dev-dulithas-projects-vercel-app-2025-04-29-18_25_50](https://github.com/user-attachments/assets/a227b486-c0d3-4ca0-8b30-0731b81b0e9a)
+
+
 A full-stack web application for managing cleaning service bookings. It includes user authentication, a customer dashboard to manage bookings (CRUD), and an admin panel (optional extension). Users can sign up, log in, and book services like deep cleaning, carpet cleaning, and more.
+
 
 ## 🚀 Features
 
@@ -10,9 +14,10 @@ A full-stack web application for managing cleaning service bookings. It includes
 - 📋 View Your Bookings
 - ✏️ Edit or Cancel Bookings
 
-### Admin Functionality (Optional)
+### Admin Functionality (Planned)
 - 🧑‍💼 View all bookings and users
 - ✨ Manage service types
+- 📊 Dashboard overview
 
 ## 🛠️ Tech Stack
 
@@ -25,6 +30,13 @@ A full-stack web application for managing cleaning service bookings. It includes
 | Hosting   | Vercel (Frontend)|
 
 ---
+
+## 🚀 UI
+
+![screencapture-cleaning-service-management-system-git-dev-dulithas-projects-vercel-app-signin-2025-04-29-18_26_03](https://github.com/user-attachments/assets/f8fa3198-e19e-4f7b-b1ef-ebeb6e8c8118)
+![screencapture-cleaning-service-management-system-git-dev-dulithas-projects-vercel-app-signup-2025-04-29-18_26_15](https://github.com/user-attachments/assets/a6d1d058-b824-45fa-a2d5-c9f6afb2bbce)
+![screencapture-localhost-5173-booking-2025-04-29-18_28_00](https://github.com/user-attachments/assets/26d90444-50cf-44b6-947a-341f9a581a58)
+![screencapture-localhost-5173-dashboard-2025-04-29-18_28_12](https://github.com/user-attachments/assets/cf727c1d-871e-4609-b37a-414baf9e3ae5)
 
 
 ## ⚙️ Getting Started
@@ -40,14 +52,6 @@ A full-stack web application for managing cleaning service bookings. It includes
 ```bash
 cd backend
 npm install
-```
-
-Create a `.env` file inside `backend`:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
 ```
 
 Run the server:
@@ -85,14 +89,10 @@ npm start
 ## 🖥️ Deployment
 
 ### Frontend
-Deployed on Vercel 🔗 [https://your-frontend.vercel.app](https://cleaning-service-management-system.vercel.app/)
-
-### Backend
-Deployed on Render/Heroku 🔗 https://your-backend.onrender.com
-
+Deployed on Vercel 🔗 [https://cleaning-service-management-system-git-dev-dulithas-projects.vercel.app/](https://cleaning-service-management-system-git-dev-dulithas-projects.vercel.app/)
 ## 🧑‍💻 Author
-**Dulitha Pathum** – dulithapathum236@gmail.com
-GitHub: [github.com/yourusername](https://github.com/Dulithapathum)
+* **Dulitha Pathum** – dulithapathum236@gmail.com
+* **GitHub** - [github.com/Dulithapathum](https://github.com/Dulithapathum)
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
