@@ -13,8 +13,9 @@ import Dashboard from "./Pages/Dashboard";
 import Navbar from "./components/Navbar";
 
 function PrivateRoute({ children }) {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/signin" />;
+  const { token } = useAuth();
+
+  return token ? children : <Navigate to="/signin" />;
 }
 
 function App() {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
             >
               Home
             </Link>
-            {user ? (
+            {isAuthenticated ? (
               <>
                 <Link
                   to="/dashboard"
@@ -92,7 +92,7 @@ const Navbar = () => {
           >
             Home
           </Link>
-          {user ? (
+          {isAuthenticated ? (
             <>
               <Link
                 to="/dashboard"
