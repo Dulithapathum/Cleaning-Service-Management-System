@@ -71,7 +71,7 @@ export const updateBooking = async (req, res) => {
   }
 };
 
-// Delete Booking Function
+// Delete Booking
 export const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findByIdAndDelete(req.params.id);
