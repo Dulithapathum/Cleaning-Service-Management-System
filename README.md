@@ -89,7 +89,7 @@ npm start
 ## 🖥️ Deployment
 
 ### Frontend
-Deployed on Vercel 🔗 [[https://cleaning-service-management-system-git-dev-dulithas-projects.vercel.app/](https://cleaning-service-management-system-git-dev-dulithas-projects.vercel.app/)]
+Deployed on Vercel 🔗 [https://cleaning-service-management-system.vercel.app](https://cleaning-service-management-system.vercel.app/)
 ## 🧑‍💻 Author
 * **Dulitha Pathum** – dulithapathum236@gmail.com
 * **GitHub** - [github.com/Dulithapathum](https://github.com/Dulithapathum)
