@@ -20,7 +20,9 @@ const BookingForm = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/services");
+        const res = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/services`
+        );
         setServices(res.data);
       } catch {
         setErrorMessage("Failed to load services.");
@@ -31,7 +33,7 @@ const BookingForm = () => {
       const token = localStorage.getItem("token");
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/bookings/${id}`,
+          `${import.meta.env.VITE_BASE_URL}/api/bookings/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -64,18 +66,26 @@ const BookingForm = () => {
 
     try {
       if (isEditMode) {
-        await axios.put(`http://localhost:5000/api/bookings/${id}`, form, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        await axios.put(
+          `${import.meta.env.VITE_BASE_URL}/api/bookings/${id}`,
+          form,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setSuccessMessage("Booking updated!");
       } else {
-        await axios.post("http://localhost:5000/api/bookings", form, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        await axios.post(
+          `${import.meta.env.VITE_BASE_URL}/api/bookings`,
+          form,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setSuccessMessage("Booking created!");
         setForm({
           customer_name: "",
